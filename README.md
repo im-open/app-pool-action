@@ -12,14 +12,14 @@ This action will start, stop, or restart an on-premises IIS app pool.
 
 ## Inputs
 
-| Parameter                  | Is Required | Description                                                                      |
-| -------------------------- | ----------- | -------------------------------------------------------------------------------- |
-| `action`                   | true        | Specify app-pool-start, app-pool-stop, app-pool-restart as the action to perform |
-| `server`                   | true        | The name of the target server                                                    |
-| `app-pool-name`            | true        | IIS app pool name                                                                |
-| `service-account-id`       | true        | The service account name                                                         |
-| `service-account-password` | true        | The service account password                                                     |
-| `server-public-key`        | true        | Path to remote server public ssl key                                             |
+| Parameter                  | Is Required | Description                                           |
+| -------------------------- | ----------- | ----------------------------------------------------- |
+| `action`                   | true        | Specify start, stop, restart as the action to perform |
+| `server`                   | true        | The name of the target server                         |
+| `app-pool-name`            | true        | IIS app pool name                                     |
+| `service-account-id`       | true        | The service account name                              |
+| `service-account-password` | true        | The service account password                          |
+| `server-public-key`        | true        | Path to remote server public ssl key                  |
 
 ## Prerequisites
 

@@ -4,7 +4,7 @@ description: 'A GitHub action that can start, stop, or restart an On-Prem IIS ap
 
 inputs:
   action:
-    description: Specify app-pool-start, app-pool-stop, app-pool-restart as the action to perform
+    description: Specify start, stop, restart as the action to perform
     default: 'start'
     required: true
   server:

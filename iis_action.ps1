@@ -1,6 +1,6 @@
 Param(
     [parameter(Mandatory = $true)]
-    [ValidateSet( 'app-pool-start', 'app-pool-stop', 'app-pool-restart')]
+    [ValidateSet( 'start', 'stop', 'restart')]
     [string]$action,
     [parameter(Mandatory = $true)]
     [string]$server,
@@ -14,16 +14,12 @@ Param(
     [string]$cert_path
 )
 
-$action_prefix = 'app\-pool\-(?<verb>.+)'
 $display_action = 'App Pool'
-
-$action -match $action_prefix
-$verb = $Matches.verb
-$title_verb = (Get-Culture).TextInfo.ToTitleCase($verb)
+$title_verb = (Get-Culture).TextInfo.ToTitleCase($action)
 
 $display_action += " $title_verb"
 $past_tense = "ed"
-switch ($verb) {
+switch ($action) {
     "start" {}
     "restart" { break; }
     "stop" { $past_tense = "ped"; break; }
