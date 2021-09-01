@@ -1,6 +1,6 @@
 # App Pool Action
 
-This action will start, stop, or restart an on-premises IIS app pool.
+This action can start, stop, or restart an IIS app pool that is hosted on an on-premises server.
 
 ## Index <!-- omit in toc -->
 
@@ -27,7 +27,9 @@ The IIS app pool action uses Web Services for Management, [WSMan], and Windows R
 
 Inbound secure WinRm network traffic (TCP port 5986) must be allowed from the GitHub Actions Runners virtual network so that remote sessions can be received.
 
-Prep the remote IIS server to accept WinRM management calls.  In general the IIS server needs to have a [WSMan] listener that looks for incoming [WinRM] calls. Firewall exceptions need to be added for the secure WinRM TCP ports, and non-secure firewall rules should be disabled. Here is an example script that would be run on the IIS server:
+Prep the remote IIS server to accept WinRM management calls.  In general the IIS server needs to have a [WSMan] listener that looks for incoming [WinRM] calls. Firewall exceptions need to be added for the secure WinRM TCP ports, and non-secure firewall rules should be disabled. More detailed information on the preparation of an on-prem server can be found in this article: [PowerShell Remoting over HTTPS with a self-signed SSL certificate]
+
+Here is an example script that would be run on the IIS server:
 
   ```powershell
   $Cert = New-SelfSignedCertificate -CertstoreLocation Cert:\LocalMachine\My -DnsName <<ip-address|fqdn-host-name>>

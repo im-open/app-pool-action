@@ -1,6 +1,6 @@
 name: 'App Pool Action'
 
-description: 'A GitHub action that can start, stop, or restart an On-Prem IIS app pool'
+description: 'This action can start, stop, or restart an IIS app pool that is hosted on an on-premises server'
 
 inputs:
   action:
