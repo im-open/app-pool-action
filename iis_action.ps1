@@ -26,16 +26,16 @@ switch ($action) {
 }
 $display_action_past_tense = "$display_action$past_tense"
 
-if ($cert_path.Length -gt 0) {
-    Write-Output "IIS $display_action"
-    Write-Output "Server: $server - App Pool: $app_pool_name"
-}
+Write-Output "IIS $display_action"
+Write-Output "Server: $server - App Pool: $app_pool_name"
 
 $credential = [PSCredential]::new($user_id, $password)
 $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
 
-Write-Output "Importing remote server cert..."
-Import-Certificate -Filepath $cert_path -CertStoreLocation 'Cert:\LocalMachine\Root'
+if ($cert_path.Length -gt 0) {
+    Write-Output "Importing remote server cert..."
+    Import-Certificate -Filepath $cert_path -CertStoreLocation 'Cert:\LocalMachine\Root'
+}
 
 $script = {
     # Relies on WebAdministration Module being installed on the remote server
