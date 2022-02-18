@@ -14,14 +14,13 @@ This action can start, stop, or restart an IIS app pool that is hosted on an on-
 
 ## Inputs
 
-| Parameter                  | Is Required | Description                                                                                                      |
-| -------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------- |
-| `action`                   | true        | Specify start, stop, restart as the action to perform                                                            |
-| `server`                   | true        | The name of the target server                                                                                    |
-| `app-pool-name`            | true        | IIS app pool name                                                                                                |
-| `service-account-id`       | true        | The service account name                                                                                         |
-| `service-account-password` | true        | The service account password                                                                                     |
-| `server-cert-path`         | false       | Path to remote server public ssl cert, only necessary if the cert is not already installed on the actions runner |
+| Parameter                  | Is Required | Description                                           |
+| -------------------------- | ----------- | ----------------------------------------------------- |
+| `action`                   | true        | Specify start, stop, restart as the action to perform |
+| `server`                   | true        | The name of the target server                         |
+| `app-pool-name`            | true        | IIS app pool name                                     |
+| `service-account-id`       | true        | The service account name                              |
+| `service-account-password` | true        | The service account password                          |
 
 ## Prerequisites
 
