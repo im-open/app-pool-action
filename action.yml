@@ -19,9 +19,6 @@ inputs:
   service-account-password:
     description: 'The service account password'
     required: true
-  server-public-key:
-    description: 'Path to remote server public ssl key'
-    required: true
 
 runs:
   using: 'composite'
@@ -30,11 +27,10 @@ runs:
       id: action
       shell: powershell
       run: |
-        $secure_password = ConvertTo-SecureString -String ${{ inputs.service-account-password }} -AsPlainText -Force
+        $secure_password = ConvertTo-SecureString -String "${{ inputs.service-account-password }}" -AsPlainText -Force
         ${{ github.action_path }}/iis_action.ps1 `
           -action "${{ inputs.action }}".ToLower() `
           -server ${{ inputs.server }} `
           -app_pool_name '${{ inputs.app-pool-name }}' `
           -user_id '${{ inputs.service-account-id }}' `
-          -password $secure_password `
-          -cert_path '${{ inputs.server-public-key }}'
+          -password $secure_password

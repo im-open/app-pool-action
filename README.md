@@ -21,7 +21,6 @@ This action can start, stop, or restart an IIS app pool that is hosted on an on-
 | `app-pool-name`            | true        | IIS app pool name                                     |
 | `service-account-id`       | true        | The service account name                              |
 | `service-account-password` | true        | The service account password                          |
-| `server-public-key`        | true        | Path to remote server public ssl key                  |
 
 ## Prerequisites
 
@@ -73,20 +72,18 @@ jobs:
    env:
       server: 'iis-server.domain.com'
       pool-name: 'website-pool'
-      cert-path: './server-cert'
 
    steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: IIS stop
-      uses: 'im-open/app-pool-action@v1.0.0'
+      uses: 'im-open/app-pool-action@v2.0.0'
       with:
         action: 'stop'
         server: ${{ env.server }}
         app-pool-name: ${{ env.pool-name }}
         service-account-id: ${{ secrets.iis_admin_user }}
         service-account-password: ${{ secrets.iis_admin_password }}
-        server-public-key: ${{ env.cert-path }}
   ...
 ```
 
