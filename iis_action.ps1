@@ -36,12 +36,17 @@ $script = {
     # https://docs.microsoft.com/en-us/powershell/module/?term=webadministration
 
     if ($Using:action -eq 'stop' -or $Using:action -eq 'restart') {
-        Stop-WebAppPool -Name $Using:app_pool_name
+        if ((Get-WebAppPoolState $Using:app_pool_name).Value -ne "Stopped") {
+            Stop-WebAppPool -Name $Using:app_pool_name
+        }
     }
 
     if ($Using:action -eq 'start' -or $Using:action -eq 'restart') {
-        Start-Sleep 10
-        Start-WebAppPool -Name $Using:app_pool_name
+        if ((Get-WebAppPoolState $Using:app_pool_name).Value -ne "Started")
+        {
+            Start-Sleep 10
+            Start-WebAppPool -Name $Using:app_pool_name
+        }
     }
 }
 
